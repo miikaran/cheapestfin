@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
+import GameSearch from './components/GameSearch.js'
 
-export class App extends Component {
-  render() {
+function App() {
+
     return (
-      <div>hi</div>
-    )
+
+      <div className = "main">
+      <GameSearch />
+      </div>
+
+    );
   }
-}
 
 export default App
 
