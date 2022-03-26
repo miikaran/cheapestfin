@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import GameSearch from './components/GameSearch.js'
 
-function App() {
+export default function App() {
 
     return (
 
-      <div className = "main">
+      <div>
       <GameSearch />
       </div>
 
     );
   }
 
-export default App
 
