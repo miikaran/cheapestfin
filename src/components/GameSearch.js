@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import {useState, useEffect} from 'react'
 import '../styles/GameSearch.css'
 import 'react-bootstrap'
-import logo from '../media/logo2.png'
+import logo from '../assets/logo2.png'
+import { Icon } from '@iconify/react';
+
 
 class GameSearch extends Component {
 
@@ -19,7 +21,8 @@ class GameSearch extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    // Handle inputti ja submitti käsittelee muutokset input kentässä.
+    // Handle inputti ja submitti käsittelee muutokset input kentässä ja
+    // vaihtaa titlen sen mukaan.
     handleInput (event) {
         this.setState({ title: event.target.value});
     }
@@ -57,9 +60,10 @@ class GameSearch extends Component {
                     pelit: json, JSONFetched: true,           
                 });   
                 console.log(this.state.handleInput);   
-            })           
+            })                     
         }
     }
+
 
     render() {
         const {JSONFetched, pelit} = this.state;
@@ -72,8 +76,11 @@ class GameSearch extends Component {
 
             <img src = {logo} className = "logo"></img>
             <form onSubmit={this.handleSubmit}>
-                <label>                 
-                    <input type="search" placeholder="KIRJOITA TÄHÄN PELIN NIMI" value={this.state.title} onChange={this.handleInput} />
+                <label>    
+
+                    <Icon icon="bi:search" className="searchicon"/>                       
+                    <input type="search" placeholder="   Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                  
+            
                 </label>               
             </form>
             <br></br>

@@ -1,8 +1,9 @@
 
-.main{
+body{
 
-    height: 110%;
-    background: radial-gradient(rgb(20, 0, 26), rgb(0, 13, 20));
+    height: 100%;
+    padding-bottom: 20px;
+    background: radial-gradient(rgb(20, 0, 26), rgb(4, 23, 31));
     background-size: 400%;
     animation: colorchange 10s linear infinite;
 }
