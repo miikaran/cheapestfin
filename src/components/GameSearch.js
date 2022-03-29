@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {useState, useEffect} from 'react'
 import '../styles/GameSearch.css'
+import 'react-bootstrap'
+import logo from '../media/logo2.png'
 
 class GameSearch extends Component {
 
@@ -10,7 +12,7 @@ class GameSearch extends Component {
 
         this.state = {
             title: "",
-            pelit: [],
+            pelit: [ ],
             DataisLoaded: false,
         };
         this.handleInput = this.handleInput.bind(this);
@@ -18,7 +20,6 @@ class GameSearch extends Component {
     }
 
     // Handle inputti ja submitti käsittelee muutokset input kentässä.
-
     handleInput (event) {
         this.setState({ title: event.target.value});
     }
@@ -29,7 +30,6 @@ class GameSearch extends Component {
     }
 
     //Hakee dataa cheapsharkin API:sta.
-
     componentDidMount = () => {
 
         fetch(`https://www.cheapshark.com/api/1.0/games?title='${this.state.handleInput}'`)
@@ -46,7 +46,6 @@ class GameSearch extends Component {
     }
 
     //Jos title muuttuu input- kentässä, niin lista päivittyy sen mukaan.
-
     componentDidUpdate(prevProps, prevState) {
         if (this.state.title !== prevState.title){
 
@@ -56,15 +55,11 @@ class GameSearch extends Component {
     
                 this.setState({
                     pelit: json, JSONFetched: true,           
-                });
-    
-                console.log(this.state.handleInput);
-    
-            })
-            
+                });   
+                console.log(this.state.handleInput);   
+            })           
         }
     }
-
 
     render() {
         const {JSONFetched, pelit} = this.state;
@@ -74,23 +69,22 @@ class GameSearch extends Component {
         <div className="FetchJson">
 
             <br></br>
-            
+
+            <img src = {logo} className = "logo"></img>
             <form onSubmit={this.handleSubmit}>
-                <label>
-                    Etsi peli
-                    <input type="text" value={this.state.title} onChange={this.handleInput} />
-                </label>
+                <label>                 
+                    <input type="search" placeholder="KIRJOITA TÄHÄN PELIN NIMI" value={this.state.title} onChange={this.handleInput} />
+                </label>               
             </form>
             <br></br>
+              {
+                pelit.map((pelit) => (     
 
-            <h1>Pelit:</h1> {
-
-                pelit.map((pelit) => (
-                  
                     <ul key = { pelit.id }>
-                        <h4>Nimi: {pelit.external} </h4>
-                        <h5>Halvin: {pelit.cheapest} </h5>
-                        <h5>Linkki: {pelit.thumb} </h5>                  
+                        <fieldset><img className = "gameImage" src = {pelit.thumb}></img><h5><mark>PELIN NIMI:<br></br></mark>{pelit.external}</h5>
+                        <h5><mark>HALVIN:<br></br> </mark>{pelit.cheapest} $ </h5>   
+                        <h5><a href={'http://store.steampowered.com/app/' + pelit.steamAppID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>   
+                        </fieldset>   
                     </ul>                 
                 ))
             }

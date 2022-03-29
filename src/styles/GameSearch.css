@@ -1,6 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
 .FetchJson{
 
-    position: relative;
     text-align: center;
+    font-size: 1.5em;
+    padding-top: 5%;
+    color: white;
+    font-family: 'Quicksand';
+
 }
+.FetchJson input{
+
+    position: relative;
+    width: 50%;
+    font-size: 1.1em;
+    left: 2%;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 2em;
+    box-shadow: rgb(251, 255, 0) 2px 0.5px 2px;
+
+}
+
+.FetchJson a{
+
+    color: #68bbff;
+}
+
+.FetchJson .logo{
+    
+    position: relative;
+    width: 20%;
+    margin-left: 2em;
+
+}
+
+.FetchJson .gameImage{
+    position: relative;
+    width: 15%;
+    margin-left: 3px;
+    margin-top: 10px;
+}
+

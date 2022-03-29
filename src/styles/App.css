@@ -1,0 +1,27 @@
+
+.main{
+
+    height: 110%;
+    background: radial-gradient(rgb(20, 0, 26), rgb(0, 13, 20));
+    background-size: 400%;
+    animation: colorchange 10s linear infinite;
+}
+
+
+@keyframes colorchange{
+
+0%{
+    background-position: 0 200%;
+}
+50%{
+    background-position: 200% 0;
+}
+
+70%{
+    background-position: 0 200%;
+}
+
+100%{
+    background-position: 200% 0;
+}
+}
