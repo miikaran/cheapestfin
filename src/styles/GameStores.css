@@ -1,0 +1,16 @@
+
+.StoresFetched{
+
+    display: flex;
+    text-align: left;
+    font-family: 'Red hat display';
+    
+}
+
+.StoresFetched ul{
+
+    position: relative;
+    margin-top: 1em;
+    padding-left: 10em;
+    color: rgb(255, 187, 0);
+}

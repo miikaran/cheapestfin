@@ -35,7 +35,7 @@ class GameSearch extends Component {
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
 
-        fetch(`https://www.cheapshark.com/api/1.0/games?title='${this.state.handleInput}'`)
+        fetch(`https://www.cheapshark.com/api/1.0/games?title='Counter Strike'&limit=10`)
         .then((res) => res.json())
         .then((json) => {
 
@@ -52,7 +52,7 @@ class GameSearch extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.state.title !== prevState.title){
 
-            fetch(`https://www.cheapshark.com/api/1.0/games?title='${this.state.title}'`)
+            fetch(`https://www.cheapshark.com/api/1.0/games?title='${this.state.title}'&limit=10`)
             .then((res) => res.json())
             .then((json) => {
     
@@ -88,7 +88,8 @@ class GameSearch extends Component {
                 pelit.map((pelit) => (     
 
                     <ul key = { pelit.id }>
-                        <fieldset><img className = "gameImage" src = {pelit.thumb}></img><h5><mark>PELIN NIMI:<br></br></mark>{pelit.external}</h5>
+                        <fieldset><img className = "gameImage" src = {pelit.thumb}></img>
+                        <h5><mark>PELIN NIMI:<br></br></mark>{pelit.external}</h5>
                         <h5><mark>HALVIN:<br></br> </mark>{pelit.cheapest} $ </h5>   
                         <h5><a href={'http://store.steampowered.com/app/' + pelit.steamAppID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>   
                         </fieldset>   
