@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import {useState, useEffect} from 'react'
 import '../styles/GameSearch.css'
 import 'react-bootstrap'
 import logo from '../assets/logo2.png'
@@ -44,7 +43,6 @@ class GameSearch extends Component {
             });
 
             console.log(this.state.handleInput);
-
         })
     }
 
@@ -64,6 +62,7 @@ class GameSearch extends Component {
         }
     }
 
+    // Renderöi haetut json datat ja palauttaa ne jsx muodossa sivulle.
 
     render() {
         const {JSONFetched, pelit} = this.state;
@@ -90,7 +89,7 @@ class GameSearch extends Component {
                     <ul key = { pelit.id }>
                         <fieldset><img className = "gameImage" src = {pelit.thumb}></img>
                         <h5><mark>PELIN NIMI:<br></br></mark>{pelit.external}</h5>
-                        <h5><mark>HALVIN:<br></br> </mark>{pelit.cheapest} $ </h5>   
+                        <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br> </mark>{pelit.cheapest} $ </h5>   
                         <h5><a href={'http://store.steampowered.com/app/' + pelit.steamAppID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>   
                         </fieldset>   
                     </ul>                 

@@ -16,7 +16,6 @@
     border-radius: 7px;
     text-align: left;
     margin-top: 2em;  
-    background-color:rgba(255, 255, 255, 0.986);
     border: 10px solid rgb(255, 255, 255);
 
 }
@@ -33,17 +32,10 @@
 .FetchJson a{
 
     color: #68bbff;
-    letter-spacing: 0.2em;
-}
-
-.FetchJson h5{
-
-    text-align: center;
 }
 
 .FetchJson .logo{
     
-    position: relative;
     width: 30%;
     margin-left: 2em;
     box-shadow: rgb(255, 238, 0) 0px 0px 10px;
@@ -52,7 +44,7 @@
 }
 
 .FetchJson .gameImage{
-    position: relative;
+
     width: 45%;
     margin-right: 0em;
     margin-top: 0.5em;
