@@ -1,5 +1,7 @@
 # CHEAPESTFIN
 
+Using CheapShark's API to fetch data about game prices.
+
 <br>
 
 ```sh
