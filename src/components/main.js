@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import '../styles/GameSearch.css'
-import 'react-bootstrap'
+import '../styles/main.css'
 import logo from '../assets/logo2.png'
 import { Icon } from '@iconify/react';
-
 
 class GameSearch extends Component {
 
@@ -34,7 +32,8 @@ class GameSearch extends Component {
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
 
-        fetch(`https://www.cheapshark.com/api/1.0/games?title='Counter Strike'&limit=10`)
+
+        fetch(`https://www.cheapshark.com/api/1.0/deals?title='counter strike'`)
         .then((res) => res.json())
         .then((json) => {
 
@@ -50,12 +49,12 @@ class GameSearch extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.state.title !== prevState.title){
 
-            fetch(`https://www.cheapshark.com/api/1.0/games?title='${this.state.title}'&limit=10`)
+            fetch(`https://www.cheapshark.com/api/1.0/deals?title='${this.state.title}'`)
             .then((res) => res.json())
             .then((json) => {
     
                 this.setState({
-                    pelit: json, JSONFetched: true,           
+                    pelit: json, JSONFetched: true, 
                 });   
                 console.log(this.state.handleInput);   
             })                     
@@ -88,10 +87,12 @@ class GameSearch extends Component {
 
                     <ul key = { pelit.id }>
                         <fieldset><img className = "gameImage" src = {pelit.thumb}></img>
-                        <h5><mark>PELIN NIMI:<br></br></mark>{pelit.external}</h5>
-                        <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br> </mark>{pelit.cheapest} $ </h5>   
-                        <h5><a href={'http://store.steampowered.com/app/' + pelit.steamAppID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>   
-                        </fieldset>   
+                        <h5><mark>PELIN NIMI:<br></br></mark>{pelit.title}</h5>
+                        <h5><mark>STEAMIN ARVOSTELU:</mark><br></br>{pelit.steamRatingText}: {pelit.steamRatingPercent} %</h5>
+                        <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br></mark>{pelit.salePrice} $ = n. {pelit.salePrice*0.9} €</h5>
+                        <h5><mark>SÄÄSTÄT NORMAALI HINNASTA:</mark><br></br>{pelit.savings} %</h5>
+                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>
+                        </fieldset>                          
                     </ul>                 
                 ))
             }

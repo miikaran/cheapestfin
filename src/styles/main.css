@@ -23,6 +23,7 @@
 .FetchJson fieldset{
 
     display: inline-block;
+    text-align: center;
     width: 60%;
     border-radius: 7px;
     letter-spacing: 0.1em;
@@ -33,6 +34,7 @@
 
     color: #68bbff;
 }
+
 
 .FetchJson .logo{
     
@@ -58,4 +60,5 @@
     color: rgb(0, 0, 0);
     left: 50%;
 }
+
 
