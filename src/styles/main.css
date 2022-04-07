@@ -2,7 +2,7 @@
 
     text-align: center;
     font-size: 1.6em;
-    padding-top: 1em;
+    padding-top: 0.5em;
     color: rgb(255, 255, 255);
     font-family: 'Red hat display';
 
@@ -10,9 +10,9 @@
 .FetchJson input{
 
     position: relative;
-    width: 50%;
-    font-size: 1em;
-    left: 2%;
+    width: 65%;
+    font-size: 0.8em;
+    left: 1%;
     border-radius: 7px;
     text-align: left;
     margin-top: 2em;  
@@ -27,6 +27,7 @@
     width: 60%;
     border-radius: 7px;
     letter-spacing: 0.1em;
+    margin-left: 1em;
     background-color: rgba(19, 37, 59, 0.267);
 }
 
@@ -38,8 +39,8 @@
 
 .FetchJson .logo{
     
-    width: 30%;
-    margin-left: 2em;
+    width: 35%;
+    margin-left: 2.8em;
     box-shadow: rgb(255, 238, 0) 0px 0px 10px;
     border-radius: 10px;
 
@@ -47,7 +48,7 @@
 
 .FetchJson .gameImage{
 
-    width: 45%;
+    width: 55%;
     margin-right: 0em;
     margin-top: 0.5em;
     box-shadow: rgb(228, 255, 254) 0px 0px 3px;
@@ -56,9 +57,10 @@
 .searchicon{
 
     position: relative;
+    font-size: 0.8em;
     z-index: 1;
     color: rgb(0, 0, 0);
-    left: 50%;
+    left: 65%;
 }
 
 

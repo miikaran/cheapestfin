@@ -23,3 +23,24 @@ body{
     background-position: 200% 0;
 }
 }
+
+.cheapsharktext{
+
+    position: absolute;
+    font-size: 1.2em;
+    top: 2%;
+    left: 1%;
+    color: white;
+    font-family: 'Red hat display';
+}
+
+.cheapsharktext a{
+
+    color: rgb(134, 237, 255);
+}
+
+.cheapsharktext img{
+
+    position: absolute;
+    right: 72%;
+}
