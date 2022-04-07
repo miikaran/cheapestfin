@@ -3,9 +3,11 @@ body{
 
     height: 100%;
     padding-bottom: 20px;
-    background: radial-gradient(rgb(20, 0, 26), rgb(4, 23, 31));
+    background: radial-gradient(rgb(13, 0, 17), rgb(2, 13, 17));
     background-size: 400%;
     animation: colorchange 10s linear infinite;
+    color: white;
+    font-family: 'Red hat display';
 }
 
 @keyframes colorchange{
@@ -24,23 +26,31 @@ body{
 }
 }
 
-.cheapsharktext{
+.title{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: radial-gradient(rgb(20, 0, 26), rgb(4, 23, 31));
+}
+
+.apidoc{
 
     position: absolute;
     font-size: 1.2em;
     top: 2%;
     left: 1%;
-    color: white;
-    font-family: 'Red hat display';
 }
 
-.cheapsharktext a{
+.apidoc a{
 
     color: rgb(134, 237, 255);
 }
 
-.cheapsharktext img{
+.apidoc img{
 
     position: absolute;
     right: 72%;
 }
+

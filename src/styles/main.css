@@ -2,7 +2,6 @@
 
     text-align: center;
     font-size: 1.6em;
-    padding-top: 0.5em;
     color: rgb(255, 255, 255);
     font-family: 'Red hat display';
 
@@ -15,7 +14,6 @@
     left: 1%;
     border-radius: 7px;
     text-align: left;
-    margin-top: 2em;  
     border: 10px solid rgb(255, 255, 255);
 
 }
@@ -36,20 +34,27 @@
     color: #68bbff;
 }
 
+.FetchJson h5{
 
-.FetchJson .logo{
-    
-    width: 35%;
-    margin-left: 2.8em;
-    box-shadow: rgb(255, 238, 0) 0px 0px 10px;
-    border-radius: 10px;
+    text-align: left;
+}
 
+.FetchJson h1{
+
+    font-size: 4.5em;
+    margin-top: -0.2em;
+    padding-bottom: 0.2em;
+    background: -webkit-linear-gradient(rgb(0, 102, 255), rgb(255, 255, 255));
+    letter-spacing: 0.1em;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 3px 2px 3px rgba(41, 223, 255, 0.315);
 }
 
 .FetchJson .gameImage{
 
     width: 55%;
-    margin-right: 0em;
+    margin-right: 30em;
     margin-top: 0.5em;
     box-shadow: rgb(228, 255, 254) 0px 0px 3px;
 }

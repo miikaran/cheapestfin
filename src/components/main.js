@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import '../styles/main.css'
-import logo from '../assets/logo2.png'
-import { Icon } from '@iconify/react';
+import {useState} from 'react'
+import { Icon } from '@iconify/react'
+import { Line } from 'react-chartjs-2'
 
 class GameSearch extends Component {
 
@@ -31,7 +32,6 @@ class GameSearch extends Component {
 
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
-
 
         fetch(`https://www.cheapshark.com/api/1.0/deals?title='counter strike'`)
         .then((res) => res.json())
@@ -72,7 +72,9 @@ class GameSearch extends Component {
 
             <br></br>
 
-            <img src = {logo} className = "logo"></img>
+            <h1>CHEAPE$TFIN</h1>
+            <h3>Täältä löydät peleille parhaat hinnat!</h3>
+
             <form onSubmit={this.handleSubmit}>
                 <label>    
 
@@ -92,7 +94,7 @@ class GameSearch extends Component {
                         <h5><mark>NORMAALI HINTA:<br></br></mark>{pelit.normalPrice} $ = n. {pelit.normalPrice*0.9} €</h5>
                         <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br></mark>{pelit.salePrice} $ = n. {pelit.salePrice*0.9} €</h5>
                         <h5><mark>SÄÄSTÄT NORMAALI HINNASTA:</mark><br></br>{pelit.savings} %</h5>
-                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>
+                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>                   
                         </fieldset>                          
                     </ul>                 
                 ))
