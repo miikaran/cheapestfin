@@ -1,8 +1,9 @@
 # CHEAPESTFIN
 
-> #### Using CheapShark's API to fetch data about game prices.
-> #### Used Rest API to make GET requests to fetch data from CheapShark's servers.
-
+### Small React app that finds cheapest price for a game you search.
+ 
+>#### Built this to learn more about API's and how to use them in your applications.
+>#### Used CheapShark's open API to fetch data about game prices.
 
 <br>
 
