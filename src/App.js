@@ -18,7 +18,6 @@ export default function App() {
           <img src = {cheapshark} width = "100px"></img>
         </div>
         
-
       <Main />
 
     </div>

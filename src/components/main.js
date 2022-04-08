@@ -3,8 +3,11 @@ import '../styles/main.css'
 import {useState} from 'react'
 import { Icon } from '@iconify/react'
 import { Line } from 'react-chartjs-2'
+import {Chart} from 'chart.js/auto'
+import {Bar} from 'react-chartjs-2';
+import { CategoryScale } from 'chart.js';
 
-class GameSearch extends Component {
+class main extends Component {
 
     constructor(props){
 
@@ -15,6 +18,7 @@ class GameSearch extends Component {
             pelit: [ ],
             DataisLoaded: false,
         };
+
         this.handleInput = this.handleInput.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -61,13 +65,32 @@ class GameSearch extends Component {
         }
     }
 
+
     // Renderöi haetut json datat ja palauttaa ne jsx muodossa sivulle.
 
     render() {
         const {JSONFetched, pelit} = this.state;
         if (!JSONFetched) return <div> Odota hetki...</div>;
-    
-    return (       
+
+        const state = {
+            labels: ['January', 'February', 'March',
+                     'April', 'May'],
+            datasets: [
+              {
+                label: 'Game prices',
+                fill: false,
+                lineTension: 0.5,
+                backgroundColor: 'rgba(75,192,192,1)',
+                borderColor: 'rgba(0,0,0,1)',
+                borderWidth: 2,
+                data: pelit.map(pelit => (pelit.salePrice, pelit.normalPrice))
+              }
+            ]
+          }
+
+  
+    return (     
+          
         <div className="FetchJson">
 
             <br></br>
@@ -94,8 +117,23 @@ class GameSearch extends Component {
                         <h5><mark>NORMAALI HINTA:<br></br></mark>{pelit.normalPrice} $ = n. {pelit.normalPrice*0.9} €</h5>
                         <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br></mark>{pelit.salePrice} $ = n. {pelit.salePrice*0.9} €</h5>
                         <h5><mark>SÄÄSTÄT NORMAALI HINNASTA:</mark><br></br>{pelit.savings} %</h5>
-                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>                   
-                        </fieldset>                          
+                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>                
+                        </fieldset>  
+
+                        <Bar
+                            data={state}
+                            options={{
+                                title:{
+                                display:true,
+                                text:'Average Rainfall per month',
+                                fontSize:20
+                                },
+                                legend:{
+                                display:true,
+                                position:'right'
+                                }
+                            }}
+                            />
                     </ul>                 
                 ))
             }
@@ -104,4 +142,4 @@ class GameSearch extends Component {
     }
 }
 
-export default GameSearch;
+export default main;
