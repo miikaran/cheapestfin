@@ -21,7 +21,6 @@
 .FetchJson fieldset{
 
     display: inline-block;
-    text-align: center;
     width: 60%;
     border-radius: 7px;
     letter-spacing: 0.1em;
@@ -65,7 +64,19 @@
     font-size: 0.8em;
     z-index: 1;
     color: rgb(0, 0, 0);
-    left: 65%;
+    left: 62%;
 }
+
+
+.datachart{
+   
+    margin-top: 3.5em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    float: right;
+    font-size: 0.8rem;
+}
+
+
 
 

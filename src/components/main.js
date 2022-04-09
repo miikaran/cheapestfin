@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import '../styles/main.css'
-import {useState} from 'react'
 import { Icon } from '@iconify/react'
 import { Line } from 'react-chartjs-2'
-import {Chart} from 'chart.js/auto'
-import {Bar} from 'react-chartjs-2';
-import { CategoryScale } from 'chart.js';
+import { Bar } from 'react-chartjs-2'
+import { Chart } from 'chart.js/auto'
+import {CategoryScale } from 'react-chartjs-2'
 
 class main extends Component {
 
@@ -37,7 +36,7 @@ class main extends Component {
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
 
-        fetch(`https://www.cheapshark.com/api/1.0/deals?title='counter strike'`)
+        fetch(`https://www.cheapshark.com/api/1.0/deals?title='counter strike'&pageSize=10`)
         .then((res) => res.json())
         .then((json) => {
 
@@ -53,7 +52,7 @@ class main extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.state.title !== prevState.title){
 
-            fetch(`https://www.cheapshark.com/api/1.0/deals?title='${this.state.title}'`)
+            fetch(`https://www.cheapshark.com/api/1.0/deals?title='${this.state.title}'&pageSize=10`)
             .then((res) => res.json())
             .then((json) => {
     
@@ -70,71 +69,73 @@ class main extends Component {
 
     render() {
         const {JSONFetched, pelit} = this.state;
-        if (!JSONFetched) return <div> Odota hetki...</div>;
+        if (!JSONFetched) return <h1> Odota hetki...</h1>;
 
-        const state = {
-            labels: ['January', 'February', 'March',
-                     'April', 'May'],
+        // Asettaa chartjs parametrit.
+        const pricecomparison = {
+            labels: ['', '',],
             datasets: [
               {
-                label: 'Game prices',
-                fill: false,
+                label: 'HINTA VERTAILU ($)',
                 lineTension: 0.5,
-                backgroundColor: 'rgba(75,192,192,1)',
-                borderColor: 'rgba(0,0,0,1)',
+                fill: true,
+                backgroundColor: 'rgb(0,191,255)',
+                borderColor: 'white',
                 borderWidth: 2,
-                data: pelit.map(pelit => (pelit.salePrice, pelit.normalPrice))
+                data: pelit.map(pelit => (pelit.normalPrice, pelit.salePrice))
               }
             ]
           }
 
-  
     return (     
           
         <div className="FetchJson">
-
-            <br></br>
-
+ 
+        <br></br>
             <h1>CHEAPE$TFIN</h1>
-            <h3>Täältä löydät peleille parhaat hinnat!</h3>
+            <h3>Täältä löydät peleille parhaat hinnat ja tilastot!</h3>
 
             <form onSubmit={this.handleSubmit}>
                 <label>    
 
                     <Icon icon="bi:search" className="searchicon"/>                       
-                    <input type="search" placeholder="   Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                  
+                    <input type="search" placeholder="  Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                  
             
-                </label>               
-            </form>
+                </label>     
+                          
+            </form> 
             <br></br>
               {
-                pelit.map((pelit) => (     
-
+                pelit.map((pelit) => (   
+                    
                     <ul key = { pelit.id }>
                         <fieldset><img className = "gameImage" src = {pelit.thumb}></img>
+                        <fieldset className="datachart">
+                           <p>Kaavio vertailee kaikkien tätä peliä myyvien verkkokauppojen hintoja ja ottaa niistä halvimman 
+                            alennuksessa olevan hinnan ja halvimman normaalin hinnan. <span style= {{fontSize: "10px", color:"black", backgroundColor: "white"}}>Järjestys: alennettu hinta, normaali hinta</span></p>
+                        <Line
+                            data={pricecomparison}
+                            options={{
+                                title:{
+                                display:true,
+                            },
+                                legend:{
+                                display: true,
+                                position:'right'
+                                }
+                            }}
+                        />
+                        </fieldset>
                         <h5><mark>PELIN NIMI:<br></br></mark>{pelit.title}</h5>
                         <h5><mark>STEAMIN ARVOSTELU:</mark><br></br>{pelit.steamRatingText}: {pelit.steamRatingPercent} %</h5>
                         <h5><mark>NORMAALI HINTA:<br></br></mark>{pelit.normalPrice} $ = n. {pelit.normalPrice*0.9} €</h5>
                         <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br></mark>{pelit.salePrice} $ = n. {pelit.salePrice*0.9} €</h5>
                         <h5><mark>SÄÄSTÄT NORMAALI HINNASTA:</mark><br></br>{pelit.savings} %</h5>
-                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>                
-                        </fieldset>  
-
-                        <Bar
-                            data={state}
-                            options={{
-                                title:{
-                                display:true,
-                                text:'Average Rainfall per month',
-                                fontSize:20
-                                },
-                                legend:{
-                                display:true,
-                                position:'right'
-                                }
-                            }}
-                            />
-                    </ul>                 
+                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>  
+                        </fieldset>                       
+                    </ul>   
+                    
+                                  
                 ))
             }
         </div>
