@@ -2,11 +2,10 @@ import React, { Component } from 'react'
 import '../styles/main.css'
 import { Icon } from '@iconify/react'
 import { Line } from 'react-chartjs-2'
-import { Bar } from 'react-chartjs-2'
 import { Chart } from 'chart.js/auto'
 import {CategoryScale } from 'react-chartjs-2'
 
-class main extends Component {
+class GamePrices extends Component {
 
     constructor(props){
 
@@ -14,6 +13,7 @@ class main extends Component {
 
         this.state = {
             title: "",
+            maxhinta: "",
             pelit: [ ],
             DataisLoaded: false,
         };
@@ -33,10 +33,19 @@ class main extends Component {
         event.preventDefault();   
     }
 
+    handlePriceInput (event) {
+        this.setState({ maxhinta: event.target.value});
+    }
+
+    handlePriceSubmit (event) {
+        console.log('Etsitään peliä: ' + this.state.maxhinta);
+        event.preventDefault();   
+    }
+
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
 
-        fetch(`https://www.cheapshark.com/api/1.0/deals?title='counter strike'&pageSize=10`)
+        fetch(`api/1.0/deals?title='counter strike'&pageSize=10`)
         .then((res) => res.json())
         .then((json) => {
 
@@ -52,7 +61,7 @@ class main extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.state.title !== prevState.title){
 
-            fetch(`https://www.cheapshark.com/api/1.0/deals?title='${this.state.title}'&pageSize=10`)
+            fetch(`api/1.0/deals?title='${this.state.title}'&pageSize=10&'${this.state.maxhinta}'`)
             .then((res) => res.json())
             .then((json) => {
     
@@ -73,16 +82,16 @@ class main extends Component {
 
         // Asettaa chartjs parametrit.
         const pricecomparison = {
-            labels: ['', '',],
+            labels: ['', '', '',],
             datasets: [
               {
-                label: 'HINTA VERTAILU ($)',
+                label: 'HINTA VERTAILU (€)',
                 lineTension: 0.5,
                 fill: true,
                 backgroundColor: 'rgb(0,191,255)',
                 borderColor: 'white',
                 borderWidth: 2,
-                data: pelit.map(pelit => (pelit.normalPrice, pelit.salePrice))
+                data: pelit.map(pelit => (pelit.normalPrice * 0.9, pelit.salePrice * 0.9))
               }
             ]
           }
@@ -105,6 +114,17 @@ class main extends Component {
                           
             </form> 
             <br></br>
+
+            <form onSubmit={this.handlePriceSubmit}>
+
+                <label>    
+
+                    <input type="text" placeholder="MAX HINTA" value={this.state.maxhinta} onChange={this.handlePriceInput} />                
+
+                </label>     
+                    
+            </form> 
+            
               {
                 pelit.map((pelit) => (   
                     
@@ -143,4 +163,4 @@ class main extends Component {
     }
 }
 
-export default main;
+export default GamePrices;
