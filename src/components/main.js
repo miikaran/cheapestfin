@@ -5,7 +5,7 @@ import { Line } from 'react-chartjs-2'
 import { Chart } from 'chart.js/auto'
 import {CategoryScale } from 'react-chartjs-2'
 
-class GamePrices extends Component {
+class main extends Component {
 
     constructor(props){
 
@@ -13,28 +13,31 @@ class GamePrices extends Component {
 
         this.state = {
             title: "",
-            maxhinta: "",
+            maxhinta: [],
+            minhinta: "",
             pelit: [ ],
             DataisLoaded: false,
         };
 
         this.handleInput = this.handleInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleUpperInput = this.handleUpperInput.bind(this);
+        this.handleLowerInput = this.handleLowerInput.bind(this);
+        this.handlePriceSubmit = this.handlePriceSubmit.bind(this);
+
     }
 
     // Handle inputti ja submitti käsittelee muutokset input kentässä ja
-    // vaihtaa titlen sen mukaan.
+    // vaihtaa parametrejä sen mukaan.
     handleInput (event) {
         this.setState({ title: event.target.value});
     }
 
-    handleSubmit (event) {
-        console.log('Etsitään peliä: ' + this.state.title);
-        event.preventDefault();   
+    handleUpperInput (event) {
+        this.setState({ maxhinta: event.target.value});
     }
 
-    handlePriceInput (event) {
-        this.setState({ maxhinta: event.target.value});
+    handleLowerInput (event) {
+        this.setState({ minhinta: event.target.value});
     }
 
     handlePriceSubmit (event) {
@@ -45,7 +48,7 @@ class GamePrices extends Component {
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
 
-        fetch(`api/1.0/deals?title='counter strike'&pageSize=10`)
+        fetch(`api/1.0/deals?title='counter strike'&pageSize=5`)
         .then((res) => res.json())
         .then((json) => {
 
@@ -61,7 +64,7 @@ class GamePrices extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.state.title !== prevState.title){
 
-            fetch(`api/1.0/deals?title='${this.state.title}'&pageSize=10&'${this.state.maxhinta}'`)
+            fetch(`api/1.0/deals?title='${this.state.title}'&pageSize=5&upperPrice=${this.state.maxhinta}&lowerPrice=${this.state.minhinta}`)
             .then((res) => res.json())
             .then((json) => {
     
@@ -82,7 +85,7 @@ class GamePrices extends Component {
 
         // Asettaa chartjs parametrit.
         const pricecomparison = {
-            labels: ['', '', '',],
+            labels: ['', '',],
             datasets: [
               {
                 label: 'HINTA VERTAILU (€)',
@@ -102,27 +105,23 @@ class GamePrices extends Component {
  
         <br></br>
             <h1>CHEAPE$TFIN</h1>
-            <h3>Täältä löydät peleille parhaat hinnat ja tilastot!</h3>
+            <h3>Täältä löydät peleille parhaat hinnat ja statistiikat!</h3>
 
             <form onSubmit={this.handleSubmit}>
-                <label>    
-
-                    <Icon icon="bi:search" className="searchicon"/>                       
-                    <input type="search" placeholder="  Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                  
-            
-                </label>     
-                          
+                <label>                         
+                    <input type="search" placeholder="  Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                             
+                </label>                             
             </form> 
+            
             <br></br>
 
+            <h5 className="hakuehdot">CUSTOMOI HAKUEHTOJA 🔀</h5>
+            
             <form onSubmit={this.handlePriceSubmit}>
-
-                <label>    
-
-                    <input type="text" placeholder="MAX HINTA" value={this.state.maxhinta} onChange={this.handlePriceInput} />                
-
-                </label>     
-                    
+                <label>       
+                    <input className = "maxhinta" type="number" placeholder="MAX HINTA (€)" value = {this.state.maxhinta} onChange={this.handleUpperInput} />
+                    <input className = "minhinta" type="number" placeholder="MIN HINTA (€)"  value = {this.state.minhinta} onChange={this.handleLowerInput} />                        
+                </label>                        
             </form> 
             
               {
@@ -163,4 +162,4 @@ class GamePrices extends Component {
     }
 }
 
-export default GamePrices;
+export default main;

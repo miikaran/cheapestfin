@@ -1,10 +1,9 @@
+
 .FetchJson{
 
     text-align: center;
-    font-size: 1.6em;
+    font-size: 1.9em;
     color: rgb(255, 255, 255);
-    font-family: 'Red hat display';
-
 }
 .FetchJson input{
 
@@ -21,11 +20,11 @@
 .FetchJson fieldset{
 
     display: inline-block;
-    width: 60%;
+    width: 65%;
     border-radius: 7px;
     letter-spacing: 0.1em;
     margin-left: 1em;
-    background-color: rgba(19, 37, 59, 0.267);
+    background-color: rgba(19, 37, 59, 0.082);
 }
 
 .FetchJson a{
@@ -34,15 +33,24 @@
 }
 
 .FetchJson h5{
-
+    
+    margin-bottom: -1em;
     text-align: left;
+}
+
+.FetchJson .hakuehdot{
+
+    position: relative;
+    left: 30%;
+    top: 13px;
+    margin-top: -0.5em;
 }
 
 .FetchJson h1{
 
     font-size: 4.5em;
+    font-family: "Red hat display";
     margin-top: -0.2em;
-    padding-bottom: 0.2em;
     background: -webkit-linear-gradient(rgb(0, 102, 255), rgb(255, 255, 255));
     letter-spacing: 0.1em;
     -webkit-background-clip: text;
@@ -52,29 +60,43 @@
 
 .FetchJson .gameImage{
 
-    width: 55%;
+    width: 45%;
     margin-right: 30em;
     margin-top: 0.5em;
-    box-shadow: rgb(228, 255, 254) 0px 0px 3px;
+    box-shadow: rgb(255, 255, 255) 0px 0px 3px;
 }
-
-.searchicon{
-
-    position: relative;
-    font-size: 0.8em;
-    z-index: 1;
-    color: rgb(0, 0, 0);
-    left: 62%;
-}
-
 
 .datachart{
    
+    border: 1px solid rgb(255, 255, 255);
     margin-top: 3.5em;
     padding-top: 2em;
     padding-bottom: 2em;
     float: right;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    font-family: "Red hat display"
+}
+
+.FetchJson .maxhinta{
+
+    position: relative;
+    width: 15%;
+    font-size: 0.6em;
+    left: 15%;
+    border-radius: 7px;
+    text-align: left;
+    border: 10px solid rgba(255, 255, 255, 0.993);
+}
+
+.FetchJson .minhinta{
+
+    position: relative;
+    width: 15%;
+    font-size: 0.6em;
+    left: 17%;
+    border-radius: 7px;
+    text-align: left;
+    border: 10px solid rgb(255, 255, 255);
 }
 
 

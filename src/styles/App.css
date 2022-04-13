@@ -7,7 +7,8 @@ body{
     background-size: 400%;
     animation: colorchange 10s linear infinite;
     color: white;
-    font-family: 'Red hat display';
+    font-family: 'Raleway';
+    overflow-x: hidden;
 }
 
 @keyframes colorchange{
