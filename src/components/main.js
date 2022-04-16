@@ -13,8 +13,8 @@ class main extends Component {
 
         this.state = {
             title: "",
-            maxhinta: [],
-            minhinta: "",
+            maxhinta: "9999",
+            minhinta: "0",
             pelit: [ ],
             DataisLoaded: false,
         };
@@ -22,7 +22,6 @@ class main extends Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleUpperInput = this.handleUpperInput.bind(this);
         this.handleLowerInput = this.handleLowerInput.bind(this);
-        this.handlePriceSubmit = this.handlePriceSubmit.bind(this);
 
     }
 
@@ -40,10 +39,6 @@ class main extends Component {
         this.setState({ minhinta: event.target.value});
     }
 
-    handlePriceSubmit (event) {
-        console.log('Etsitään peliä: ' + this.state.maxhinta);
-        event.preventDefault();   
-    }
 
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
@@ -75,9 +70,10 @@ class main extends Component {
             })                     
         }
     }
+    
 
 
-    // Renderöi haetut json datat ja palauttaa ne jsx muodossa sivulle.
+    // Renderöi haetut json datat ja palauttaa ne sivulle.
 
     render() {
         const {JSONFetched, pelit} = this.state;
@@ -107,7 +103,7 @@ class main extends Component {
             <h1>CHEAPE$TFIN</h1>
             <h3>Täältä löydät peleille parhaat hinnat ja statistiikat!</h3>
 
-            <form onSubmit={this.handleSubmit}>
+            <form>
                 <label>                         
                     <input type="search" placeholder="  Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                             
                 </label>                             
@@ -117,12 +113,14 @@ class main extends Component {
 
             <h5 className="hakuehdot">CUSTOMOI HAKUEHTOJA 🔀</h5>
             
-            <form onSubmit={this.handlePriceSubmit}>
-                <label>       
-                    <input className = "maxhinta" type="number" placeholder="MAX HINTA (€)" value = {this.state.maxhinta} onChange={this.handleUpperInput} />
-                    <input className = "minhinta" type="number" placeholder="MIN HINTA (€)"  value = {this.state.minhinta} onChange={this.handleLowerInput} />                        
-                </label>                        
-            </form> 
+            <form>
+                <h6>MAX HINTA......</h6>
+                <h6 className="min">MIN HINTA......</h6>
+                <label>  
+                    <input className = "maxhinta" type="number" value={this.state.maxhinta} onChange={this.handleUpperInput} />
+                    <input className = "minhinta" type="number" value={this.state.minhinta} onChange={this.handleLowerInput} />                     
+                </label>                       
+            </form>
             
               {
                 pelit.map((pelit) => (   
