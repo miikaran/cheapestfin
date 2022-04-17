@@ -22,6 +22,8 @@ class main extends Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleUpperInput = this.handleUpperInput.bind(this);
         this.handleLowerInput = this.handleLowerInput.bind(this);
+        this.resetAll = this.resetAll.bind(this);
+        this.search = this.search.bind(this);
 
     }
 
@@ -37,6 +39,21 @@ class main extends Component {
 
     handleLowerInput (event) {
         this.setState({ minhinta: event.target.value});
+    }
+
+    resetAll () {
+
+        this.setState({maxhinta: "9999"});
+        this.setState({title: "counter strike"});
+        this.setState({minhinta: "0"})
+
+    }
+
+    search (event) {
+
+        this.setState({maxhinta: this.state.maxhinta});
+        this.setState({minhinta: this.state.minhinta})
+
     }
 
 
@@ -77,7 +94,7 @@ class main extends Component {
 
     render() {
         const {JSONFetched, pelit} = this.state;
-        if (!JSONFetched) return <h1> Odota hetki...</h1>;
+        if (!JSONFetched) return <h1 style={{textAlign: 'center'}}> Odota hetki...</h1>;
 
         // Asettaa chartjs parametrit.
         const pricecomparison = {
@@ -100,6 +117,7 @@ class main extends Component {
         <div className="FetchJson">
  
         <br></br>
+
             <h1>CHEAPE$TFIN</h1>
             <h3>Täältä löydät peleille parhaat hinnat ja statistiikat!</h3>
 
@@ -107,15 +125,16 @@ class main extends Component {
                 <label>                         
                     <input type="search" placeholder="  Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                             
                 </label>                             
-            </form> 
+            </form>
             
             <br></br>
 
-            <h5 className="hakuehdot">CUSTOMOI HAKUEHTOJA 🔀</h5>
+            <button className="tyhjennä" onClick={this.resetAll}>NOLLAA HAKUEHDOT</button>
+            <h5 className="customoi">CUSTOMOI HAKUEHTOJA 🔀</h5>
             
             <form>
-                <h6>MAX HINTA......</h6>
-                <h6 className="min">MIN HINTA......</h6>
+                <h6>MAX HINTA -</h6>
+                <h6 className="min">MIN HINTA -</h6>
                 <label>  
                     <input className = "maxhinta" type="number" value={this.state.maxhinta} onChange={this.handleUpperInput} />
                     <input className = "minhinta" type="number" value={this.state.minhinta} onChange={this.handleLowerInput} />                     

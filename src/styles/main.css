@@ -38,12 +38,14 @@
     text-align: left;
 }
 
-.FetchJson .hakuehdot{
+.FetchJson .customoi{
 
     position: relative;
-    left: 30%;
+    left: 20%;
     top: 30px;
     margin-top: -1em;
+    z-index: -1;
+
 }
 
 .FetchJson h1{
@@ -81,7 +83,7 @@
 
     width: 15%;
     font-size: 0.6em;
-    left: 15%;
+    left: 10%;
     border-radius: 7px;
     text-align: left;
     border: 10px solid rgba(255, 255, 255, 0.993);
@@ -91,7 +93,7 @@
 
     width: 15%;
     font-size: 0.6em;
-    left: 17%;
+    left: 12%;
     border-radius: 7px;
     text-align: left;
     border: 10px solid rgb(255, 255, 255);
@@ -100,17 +102,51 @@
 .FetchJson h6{
 
     position: relative;
-    left: 2%;
+    right: 3%;
     margin: 0;
-    color:rgba(228, 228, 228, 0.514);
+    color:rgba(255, 255, 255, 0.582);
     font-size: 0.5em;
+    text-decoration: underline;
 }
 
 .FetchJson .min{
     
-    margin-top: -1.2em;
+    margin-top: -1.25em;
+    padding-bottom: 0.1em;
     left: 20%;
 }
+
+
+.FetchJson .tyhjennä{
+
+    position: relative;
+    left: 19%;
+    margin-top: 0.15em;
+    border-radius: 5px;
+    width: 10%;
+    font-size: 0.4em;
+    font-weight: bold;
+    padding: 1em;
+    float: left;
+    color: white;
+    background-image: linear-gradient(92.88deg, #111b3f 9.16%, #231c58 43.89%, #1d113f 64.72%);
+    border: 2px solid rgb(255, 255, 255);
+    transition: all 0.3s;
+    cursor: pointer;
+
+}
+
+.tyhjennä:hover{
+
+    width: 11%;
+    background-image: linear-gradient(92.88deg, #1b295c 9.16%, #352c77 43.89%, #2f1f5e 64.72%);
+
+
+}
+
+
+
+
 
 
 
