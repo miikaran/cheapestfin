@@ -82,7 +82,7 @@ class main extends Component {
 
         // Asettaa chartjs parametrit.
         const pricecomparison = {
-            labels: ['', '',],
+            labels: ['NORMAALI HINTA', 'ALENNETTU HINTA',],
             datasets: [
               {
                 label: 'HINTA VERTAILU (€)',
@@ -91,7 +91,7 @@ class main extends Component {
                 backgroundColor: 'rgb(0,191,255)',
                 borderColor: 'white',
                 borderWidth: 2,
-                data: pelit.map(pelit => (pelit.normalPrice * 0.9, pelit.normalPrice))
+                data: [pelit.map(pelit => (pelit.normalPrice * 0.9)), pelit.map(pelit => (pelit.salePrice * 0.9))]
               }
             ]
           }
@@ -111,7 +111,7 @@ class main extends Component {
             </form>
 
             <br></br>
-            
+
             <button className="tyhjennä" onClick={this.resetAll}>NOLLAA HAKUEHDOT</button>
             <h5 className="customoi">CUSTOMOI HAKUEHTOJA 🔀</h5>            
             <form>
@@ -123,13 +123,13 @@ class main extends Component {
                 </label>                       
             </form>        
               {
-                pelit.map((pelit) => (   
+                pelit.map((pelit, key) => (   
                     
-                    <ul key = { pelit.id }>
+                    <ul key = { key }>
                         <fieldset><img className = "gameImage" src = {pelit.thumb}></img>
                         <fieldset className="datachart">
                            <p>Kaavio vertailee kaikkien tätä peliä myyvien verkkokauppojen hintoja ja ottaa niistä halvimman 
-                            alennuksessa olevan hinnan ja halvimman normaalin hinnan. <span style= {{fontSize: "10px", color:"black", backgroundColor: "white"}}>Järjestys: alennettu hinta, normaali hinta</span></p>
+                            normaalin hinnan ja halvimman alennuksessa olevan hinnan. <span style= {{fontSize: "10px", color:"black", backgroundColor: "white"}}>Järjestys: normaali hinta, alennettu hinta</span></p>
                         <Line
                             data={pricecomparison}
                             options={{
