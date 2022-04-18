@@ -5,6 +5,7 @@
     font-size: 1.9em;
     color: rgb(255, 255, 255);
 }
+
 .FetchJson input{
 
     position: relative;
@@ -143,6 +144,15 @@
 
 
 }
+
+.StoresFetched{
+
+    position: absolute;
+    top: 0%;
+    left: 0%;
+}
+
+
 
 
 

@@ -35,9 +35,9 @@ class GameStores extends Component {
               {
                 pelikaupat.map((pelikaupat) => (     
 
-                    <ul key = { pelikaupat.id }>
-                        <h5>{pelikaupat.storeName}</h5>                                             
-                    </ul>                 
+                    <ol key = { pelikaupat.id }>
+                        <img src = {'https://www.cheapshark.com/' + pelikaupat.images.logo}></img>                                     
+                    </ol>                 
                 ))
             }
         </div>

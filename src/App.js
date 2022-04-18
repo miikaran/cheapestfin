@@ -9,18 +9,15 @@ export default function App() {
 
     return (
 
-      <div className="main">
-    
+    <div className="main">  
         <div className="apidoc">
           Game data from CheapShark's open API.
-          <br></br>
-          <a href="https://apidocs.cheapshark.com/">API DOCS</a>
-          <br></br>
-          <img src = {cheapshark} width = "100px"></img>
+            <br></br>
+            <a href="https://apidocs.cheapshark.com/">API DOCS</a>
+            <br></br>
+            <img src = {cheapshark} width = "100px"></img>
         </div>
       <Main />
-      <GameStores />
-
     </div>
 
     );

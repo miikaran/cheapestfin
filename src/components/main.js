@@ -23,11 +23,9 @@ class main extends Component {
         this.handleUpperInput = this.handleUpperInput.bind(this);
         this.handleLowerInput = this.handleLowerInput.bind(this);
         this.resetAll = this.resetAll.bind(this);
-        this.search = this.search.bind(this);
-
     }
 
-    // Handle inputti ja submitti käsittelee muutokset input kentässä ja
+    // handlet käsittelee muutokset input kentässä ja
     // vaihtaa parametrejä sen mukaan.
     handleInput (event) {
         this.setState({ title: event.target.value});
@@ -44,36 +42,26 @@ class main extends Component {
     resetAll () {
 
         this.setState({maxhinta: "9999"});
-        this.setState({title: "counter strike"});
-        this.setState({minhinta: "0"})
+        this.setState({title: " "});
+        this.setState({minhinta: "0"});
 
     }
-
-    search (event) {
-
-        this.setState({maxhinta: this.state.maxhinta});
-        this.setState({minhinta: this.state.minhinta})
-
-    }
-
 
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
 
-        fetch(`api/1.0/deals?title='counter strike'&pageSize=5`)
+        fetch(`api/1.0/deals?`)
         .then((res) => res.json())
         .then((json) => {
 
             this.setState({
                 pelit: json, JSONFetched: true,           
             });
-
-            console.log(this.state.handleInput);
         })
     }
 
     //Jos title muuttuu input- kentässä, niin lista päivittyy sen mukaan.
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevState) {
         if (this.state.title !== prevState.title){
 
             fetch(`api/1.0/deals?title='${this.state.title}'&pageSize=5&upperPrice=${this.state.maxhinta}&lowerPrice=${this.state.minhinta}`)
@@ -82,19 +70,15 @@ class main extends Component {
     
                 this.setState({
                     pelit: json, JSONFetched: true, 
-                });   
-                console.log(this.state.handleInput);   
+                });
             })                     
         }
     }
     
-
-
     // Renderöi haetut json datat ja palauttaa ne sivulle.
-
     render() {
         const {JSONFetched, pelit} = this.state;
-        if (!JSONFetched) return <h1 style={{textAlign: 'center'}}> Odota hetki...</h1>;
+        if (!JSONFetched) return <h1 style={{textAlign: 'center'}}> Odota hetki...</h1>
 
         // Asettaa chartjs parametrit.
         const pricecomparison = {
@@ -107,31 +91,29 @@ class main extends Component {
                 backgroundColor: 'rgb(0,191,255)',
                 borderColor: 'white',
                 borderWidth: 2,
-                data: pelit.map(pelit => (pelit.normalPrice * 0.9, pelit.salePrice * 0.9))
+                data: pelit.map(pelit => (pelit.normalPrice * 0.9, pelit.normalPrice))
               }
             ]
           }
 
     return (     
           
-        <div className="FetchJson">
- 
-        <br></br>
+        <div className="FetchJson">  
+
+            <br></br>
 
             <h1>CHEAPE$TFIN</h1>
             <h3>Täältä löydät peleille parhaat hinnat ja statistiikat!</h3>
-
             <form>
                 <label>                         
                     <input type="search" placeholder="  Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                             
                 </label>                             
             </form>
-            
-            <br></br>
 
-            <button className="tyhjennä" onClick={this.resetAll}>NOLLAA HAKUEHDOT</button>
-            <h5 className="customoi">CUSTOMOI HAKUEHTOJA 🔀</h5>
+            <br></br>
             
+            <button className="tyhjennä" onClick={this.resetAll}>NOLLAA HAKUEHDOT</button>
+            <h5 className="customoi">CUSTOMOI HAKUEHTOJA 🔀</h5>            
             <form>
                 <h6>MAX HINTA -</h6>
                 <h6 className="min">MIN HINTA -</h6>
@@ -139,8 +121,7 @@ class main extends Component {
                     <input className = "maxhinta" type="number" value={this.state.maxhinta} onChange={this.handleUpperInput} />
                     <input className = "minhinta" type="number" value={this.state.minhinta} onChange={this.handleLowerInput} />                     
                 </label>                       
-            </form>
-            
+            </form>        
               {
                 pelit.map((pelit) => (   
                     
@@ -169,7 +150,8 @@ class main extends Component {
                         <h5><mark>SÄÄSTÄT NORMAALI HINNASTA:</mark><br></br>{pelit.savings} %</h5>
                         <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>  
                         </fieldset>                       
-                    </ul>   
+                    </ul> 
+        
                     
                                   
                 ))
