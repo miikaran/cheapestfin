@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import Main from './components/main.js'
-import GameStores from './components/GameStores.js'
 import './styles/App.css'
 import cheapshark from './assets/cheapshark.png'
-import logo from './assets/logo2.png'
 
 export default function App() {
 

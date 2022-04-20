@@ -4,6 +4,7 @@ import { Icon } from '@iconify/react'
 import { Line } from 'react-chartjs-2'
 import { Chart } from 'chart.js/auto'
 import {CategoryScale } from 'react-chartjs-2'
+import loading from '../assets/loading anim.gif'
 
 class main extends Component {
 
@@ -78,7 +79,7 @@ class main extends Component {
     // Renderöi haetut json datat ja palauttaa ne sivulle.
     render() {
         const {JSONFetched, pelit} = this.state;
-        if (!JSONFetched) return <h1 style={{textAlign: 'center'}}> Odota hetki...</h1>
+        if (!JSONFetched) return <h1 style={{textAlign: 'center'}}> Odota hetki...<br></br><img src={loading} width="100%"></img></h1>
 
         // Asettaa chartjs parametrit.
         const pricecomparison = {
