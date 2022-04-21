@@ -113,16 +113,7 @@ class main extends Component {
             <br></br>
 
             <button className="tyhjennä" onClick={this.resetAll}>NOLLAA HAKUEHDOT</button>
-            <h5 className="customoi" style={{
-
-            fontSize: "1.32vw",
-            position: "relative", 
-            left: "20%",
-            top: "30px", 
-            marginTop: "-1em", 
-            zIndex: "-1"}}>
-            CUSTOMOI HAKUEHTOJA 🔀</h5> 
-
+            <h5 className="customoi"> CUSTOMOI HAKUEHTOJA 🔀</h5> 
             <form>
                 <h6>MAX HINTA -</h6>
                 <h6 className="min"> MIN HINTA -</h6>
@@ -136,21 +127,11 @@ class main extends Component {
                 pelit.map((pelit, key) => (   
                   
                     <ul key = { key }>
-                        <fieldset><img className = "gameImage" src = {pelit.thumb} style={{
-                            
-                            width: "55%", 
-                            marginRight: "30em", 
-                            marginTop: "0.5em", 
-                            boxShadow: "rgb(255, 255, 255) 0px 0px 3px"}}>
-                            </img>
-
+                        <fieldset><img className = "gameImage" src = {pelit.thumb}></img>
                         <fieldset className="datachart">
-                           <p>Kaavio vertailee kaikkien tätä peliä myyvien verkkokauppojen hintoja ja ottaa niistä halvimman 
-                            normaalin hinnan ja halvimman alennuksessa olevan hinnan. <span style= {{
-                                fontSize: "10px", 
-                                color:"black", 
-                                backgroundColor: "white"}}>
-                                Järjestys: normaali hinta, alennettu hinta</span></p>
+                           <p>Kaavio vertailee kaikkien tätä peliä myyvien verkkokauppojen hintoja ja ottaa niistä 
+                             halvimman normaalin hinnan ja halvimman alennuksessa olevan hinnan. 
+                            <span style= {{ fontSize: "10px", color:"black", backgroundColor: "white"}}> Järjestys: normaali hinta, alennettu hinta</span></p>
                         <Line
                             data={pricecomparison}
                             options={{
