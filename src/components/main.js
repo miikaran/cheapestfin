@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react'
 import { Line } from 'react-chartjs-2'
 import { Chart } from 'chart.js/auto'
 import {CategoryScale } from 'react-chartjs-2'
-import loading from '../assets/loading anim.gif'
+import loading from '../assets/loading-buffering.gif'
 
 class main extends Component {
 
@@ -79,11 +79,11 @@ class main extends Component {
     // Renderöi haetut json datat ja palauttaa ne sivulle.
     render() {
         const {JSONFetched, pelit} = this.state;
-        if (!JSONFetched) return <h1 style={{textAlign: 'center'}}> Odota hetki...<br></br><img src={loading} width="100%"></img></h1>
+        if (!JSONFetched) return <h1 style={{textAlign: 'center'}}> Odota hetki...<br></br><br></br><img src={loading} width="10%"></img></h1>
 
         // Asettaa chartjs parametrit.
         const pricecomparison = {
-            labels: ['NORMAALI HINTA', 'ALENNETTU HINTA',],
+            labels: ['', ''],
             datasets: [
               {
                 label: 'HINTA VERTAILU (€)',
@@ -104,7 +104,7 @@ class main extends Component {
             <br></br>
 
             <h1>CHEAPE$TFIN</h1>
-            <h3>Täältä löydät peleille parhaat hinnat ja statistiikat!</h3>
+            <h3 style={{fontSize: "2vw"}}>Täältä löydät peleille parhaat hinnat ja statistiikat!</h3>
             <form>
                 <label>                         
                     <input type="search" placeholder="  Etsi peliä....." value={this.state.title} onChange={this.handleInput} />                             
@@ -146,15 +146,13 @@ class main extends Component {
                         </fieldset>
                         <h5><mark>PELIN NIMI:<br></br></mark>{pelit.title}</h5>
                         <h5><mark>STEAMIN ARVOSTELU:</mark><br></br>{pelit.steamRatingText}: {pelit.steamRatingPercent} %</h5>
-                        <h5><mark>NORMAALI HINTA:<br></br></mark>{pelit.normalPrice} $ = n. {pelit.normalPrice*0.9} €</h5>
-                        <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br></mark>{pelit.salePrice} $ = n. {pelit.salePrice*0.9} €</h5>
-                        <h5><mark>SÄÄSTÄT NORMAALI HINNASTA:</mark><br></br>{pelit.savings} %</h5>
+                        <h5><mark>NORMAALI HINTA:<br></br></mark>{parseFloat(pelit.normalPrice).toFixed(2)} $ = n. {parseFloat(pelit.normalPrice*0.9).toFixed(2)} €</h5>
+                        <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br></mark>{parseFloat(pelit.salePrice).toFixed(2)} $ = n. {parseFloat(pelit.salePrice*0.9).toFixed(2)} €</h5>
+                        <h5><mark>SÄÄSTÄT NORMAALI HINNASTA:</mark><br></br>{parseFloat(pelit.savings).toFixed(2)} %</h5>
                         <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>  
                         </fieldset>                       
                     </ul> 
-        
-                    
-                                  
+                                 
                 ))
             }
         </div>

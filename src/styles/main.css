@@ -35,12 +35,14 @@
 
 .FetchJson h5{
     
+    font-size: 0.85em;
     margin-bottom: -1em;
     text-align: left;
 }
 
 .FetchJson .customoi{
 
+    font-size: 1.32vw;
     position: relative;
     left: 20%;
     top: 30px;
@@ -51,7 +53,7 @@
 
 .FetchJson h1{
 
-    font-size: 4.5em;
+    font-size: 4em;
     font-family: "Red hat display";
     margin-top: -0.2em;
     background: -webkit-linear-gradient(rgb(0, 102, 255), rgb(255, 255, 255));
@@ -63,7 +65,7 @@
 
 .FetchJson .gameImage{
 
-    width: 45%;
+    width: 55%;
     margin-right: 30em;
     margin-top: 0.5em;
     box-shadow: rgb(255, 255, 255) 0px 0px 3px;
@@ -83,7 +85,7 @@
 .FetchJson .maxhinta{
 
     width: 15%;
-    font-size: 0.6em;
+    font-size: 1vw;
     left: 10%;
     border-radius: 7px;
     text-align: left;
@@ -93,7 +95,7 @@
 .FetchJson .minhinta{
 
     width: 15%;
-    font-size: 0.6em;
+    font-size: 1vw;
     left: 12%;
     border-radius: 7px;
     text-align: left;
@@ -152,6 +154,136 @@
     left: 0%;
 }
 
+
+/* Responsiivisuus hommelit */
+
+
+@media (max-width: 1024px){
+
+    .FetchJson{
+        position: absolute;
+    }
+    
+    .FetchJson input{
+        width: 110%;
+        font-size: 1em;
+    }
+    .FetchJson .minhinta{
+        bottom: 60px;
+        left: -30vw;
+        font-size: 0.8em;
+        width: 30%;
+    }
+    .FetchJson .maxhinta{
+        bottom: 12px;
+        left: -5vw;
+        font-size: 0.8em;
+        width: 30%;
+    }
+    .FetchJson .tyhjennä{
+
+        top: 70px;
+        left: 15vw;
+        width: 40%;
+        font-size: 0.5em;
+
+    }
+    .FetchJson fieldset{
+
+        top: 50px;
+    }
+    .FetchJson h6{
+        bottom: 15px;
+        left: -14vw;
+
+    }
+    .FetchJson .min{
+        bottom: 15px;
+        left: -60vw;
+
+    }
+    .FetchJson .customoi{
+        opacity: 0;
+    }
+}
+
+
+@media (max-width: 500px){
+
+    .FetchJson{
+        position: absolute;
+    }
+    .FetchJson input{
+        width: 90%;
+        font-size: 1em;
+    }
+    .FetchJson .minhinta{
+        bottom: 60px;
+        left: -100vw;
+        font-size: 0.8em;
+        width: 30%;
+    }
+    .FetchJson .maxhinta{
+        bottom: 12px;
+        left: -0vw;
+        font-size: 0.8em;
+        width: 30%;
+    }
+    .FetchJson .tyhjennä{
+
+        top: 130px;
+        left: 20vw;
+        width: 45%;
+        font-size: 0.8em;
+
+    }
+    .FetchJson fieldset{
+
+        margin-top: 4em;
+    }
+    .FetchJson h6{
+        bottom: 15px;
+        left: -15vw;
+        font-size: 5vw;
+
+    }
+    .FetchJson .min{
+        bottom: 15px;
+        left: -116vw;
+
+    }
+    .FetchJson .customoi{
+        opacity: 0;
+    }
+
+    .FetchJson h3{
+        opacity: 0;
+    }
+
+}
+
+
+@media (max-width: 400px){
+
+    .FetchJson{
+        position: absolute;
+    }
+    .FetchJson input{
+        width: 90%;
+        font-size: 1em;
+    }
+    .FetchJson .minhinta{
+        bottom: 60px;
+        left: -115vw;
+        font-size: 0.8em;
+        width: 30%;
+    }
+
+    .FetchJson .min{
+        left: -135vw;
+    }
+
+}
 
 
 
