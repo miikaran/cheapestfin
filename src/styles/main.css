@@ -28,11 +28,6 @@
     background-color: rgba(19, 37, 59, 0.082);
 }
 
-.FetchJson a{
-
-    color: #68bbff;
-}
-
 .FetchJson h5{
     
     font-size: 0.85em;
@@ -40,16 +35,6 @@
     text-align: left;
 }
 
-.FetchJson .customoi{
-
-    font-size: 1.32vw;
-    position: relative;
-    left: 20%;
-    top: 30px;
-    margin-top: -1em;
-    z-index: -1;
-
-}
 
 .FetchJson h1{
 
@@ -61,14 +46,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 3px 2px 3px rgba(41, 223, 255, 0.315);
-}
-
-.FetchJson .gameImage{
-
-    width: 55%;
-    margin-right: 30em;
-    margin-top: 0.5em;
-    box-shadow: rgb(255, 255, 255) 0px 0px 3px;
 }
 
 .datachart{
@@ -114,11 +91,10 @@
 
 .FetchJson .min{
     
-    margin-top: -1.25em;
-    padding-bottom: 0.1em;
+    margin-top: -1.25em; 
+    padding-bottom: 0.1em; 
     left: 20%;
 }
-
 
 .FetchJson .tyhjennä{
 
@@ -144,14 +120,6 @@
     width: 11%;
     background-image: linear-gradient(92.88deg, #1b295c 9.16%, #352c77 43.89%, #2f1f5e 64.72%);
 
-
-}
-
-.StoresFetched{
-
-    position: absolute;
-    top: 0%;
-    left: 0%;
 }
 
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import '../styles/main.css'
-import { Icon } from '@iconify/react'
 import { Line } from 'react-chartjs-2'
 import { Chart } from 'chart.js/auto'
 import {CategoryScale } from 'react-chartjs-2'
@@ -114,10 +113,20 @@ class main extends Component {
             <br></br>
 
             <button className="tyhjennä" onClick={this.resetAll}>NOLLAA HAKUEHDOT</button>
-            <h5 className="customoi">CUSTOMOI HAKUEHTOJA 🔀</h5>            
+            <h5 className="customoi" style={{
+
+            fontSize: "1.32vw",
+            position: "relative", 
+            left: "20%",
+            top: "30px", 
+            marginTop: "-1em", 
+            zIindex: "-1"}}>
+            CUSTOMOI HAKUEHTOJA 🔀</h5> 
+
             <form>
                 <h6>MAX HINTA -</h6>
-                <h6 className="min">MIN HINTA -</h6>
+                <h6 className="min"> MIN HINTA -</h6>
+
                 <label>  
                     <input className = "maxhinta" type="number" value={this.state.maxhinta} onChange={this.handleUpperInput} />
                     <input className = "minhinta" type="number" value={this.state.minhinta} onChange={this.handleLowerInput} />                     
@@ -125,12 +134,23 @@ class main extends Component {
             </form>        
               {
                 pelit.map((pelit, key) => (   
-                    
+                  
                     <ul key = { key }>
-                        <fieldset><img className = "gameImage" src = {pelit.thumb}></img>
+                        <fieldset><img className = "gameImage" src = {pelit.thumb} style={{
+                            
+                            width: "55%", 
+                            marginRight: "30em", 
+                            marginTop: "0.5em", 
+                            boxShadow: "rgb(255, 255, 255) 0px 0px 3px"}}>
+                            </img>
+
                         <fieldset className="datachart">
                            <p>Kaavio vertailee kaikkien tätä peliä myyvien verkkokauppojen hintoja ja ottaa niistä halvimman 
-                            normaalin hinnan ja halvimman alennuksessa olevan hinnan. <span style= {{fontSize: "10px", color:"black", backgroundColor: "white"}}>Järjestys: normaali hinta, alennettu hinta</span></p>
+                            normaalin hinnan ja halvimman alennuksessa olevan hinnan. <span style= {{
+                                fontSize: "10px", 
+                                color:"black", 
+                                backgroundColor: "white"}}>
+                                Järjestys: normaali hinta, alennettu hinta</span></p>
                         <Line
                             data={pricecomparison}
                             options={{
@@ -149,10 +169,9 @@ class main extends Component {
                         <h5><mark>NORMAALI HINTA:<br></br></mark>{parseFloat(pelit.normalPrice).toFixed(2)} $ = n. {parseFloat(pelit.normalPrice*0.9).toFixed(2)} €</h5>
                         <h5><mark>HALVIN HINTA TÄLLÄ HETKELLÄ:<br></br></mark>{parseFloat(pelit.salePrice).toFixed(2)} $ = n. {parseFloat(pelit.salePrice*0.9).toFixed(2)} €</h5>
                         <h5><mark>SÄÄSTÄT NORMAALI HINNASTA:</mark><br></br>{parseFloat(pelit.savings).toFixed(2)} %</h5>
-                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>  
+                        <h5><a href={'https://www.cheapshark.com/redirect?dealID=' + pelit.dealID} style={{color: "#68bbff"}}><strong>LINKKI VERKKOKAUPPAAN</strong></a></h5>  
                         </fieldset>                       
-                    </ul> 
-                                 
+                    </ul>                                 
                 ))
             }
         </div>
