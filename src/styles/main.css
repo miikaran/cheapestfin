@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap');
+
 
 .FetchJson{
 
@@ -112,6 +115,7 @@
     border: 1px solid rgb(255, 255, 255);
     transition: all 0.3s;
     cursor: pointer;
+    z-index: 1;
 
 }
 
@@ -231,7 +235,7 @@
 }
 
 
-@media (max-width: 400px){
+@media (max-width: 420px){
 
     .FetchJson{
         position: absolute;
@@ -242,13 +246,13 @@
     }
     .FetchJson .minhinta{
         bottom: 60px;
-        left: -115vw;
+        left: -130vw;
         font-size: 0.8em;
         width: 30%;
     }
 
     .FetchJson .min{
-        left: -135vw;
+        left: -155vw;
     }
 
 }

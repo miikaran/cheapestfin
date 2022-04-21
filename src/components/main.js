@@ -16,7 +16,7 @@ class main extends Component {
             maxhinta: "9999",
             minhinta: "0",
             pelit: [ ],
-            DataisLoaded: false,
+            ladattu: false,
         };
 
         this.handleInput = this.handleInput.bind(this);
@@ -120,7 +120,7 @@ class main extends Component {
             left: "20%",
             top: "30px", 
             marginTop: "-1em", 
-            zIindex: "-1"}}>
+            zIndex: "-1"}}>
             CUSTOMOI HAKUEHTOJA 🔀</h5> 
 
             <form>
