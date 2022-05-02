@@ -50,7 +50,7 @@ class main extends Component {
     //Hakee dataa cheapsharkin API:sta.
     componentDidMount = () => {
 
-        fetch(`api/1.0/deals?`)
+        fetch(`https://www.cheapshark.com/api/1.0/deals?`)
         .then((res) => res.json())
         .then((json) => {
 
@@ -64,7 +64,7 @@ class main extends Component {
     componentDidUpdate(prevState) {
         if (this.state.title !== prevState.title){
 
-            fetch(`api/1.0/deals?title='${this.state.title}'&pageSize=5&upperPrice=${this.state.maxhinta}&lowerPrice=${this.state.minhinta}`)
+            fetch(`https://www.cheapshark.com/api/1.0/deals?title='${this.state.title}'&pageSize=5&upperPrice=${this.state.maxhinta}&lowerPrice=${this.state.minhinta}`)
             .then((res) => res.json())
             .then((json) => {
     
