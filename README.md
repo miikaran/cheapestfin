@@ -1,8 +1,12 @@
 # CHEAPESTFIN
 
-### Small React app that finds cheapest price and other info for a game you search.
+### Small ReactJS app that finds cheapest price and other info for a game you search.
  
-> Price data is fetched from CheapShark's open API
+> Price data is fetched from CheapShark's open API.
+
+> Used class based components.
+
+> 
 
 
 <br>
